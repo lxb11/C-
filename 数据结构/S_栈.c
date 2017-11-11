@@ -92,7 +92,7 @@ int is_full(Stack *stack)//判断是否满,栈满返回-1,栈空返回0
     }
 }
 
-int clear_stack(Stack * stack)//清空栈，失败返回1,成功返回0
+int clear_stack(Stack * stack)//清空栈，失败返回-1,成功返回0
 {
     if(stack == NULL)
     {
@@ -118,12 +118,16 @@ int main()
 {
     Stack * a;
     a = create(10);//创建大小为10的栈
-    push(a, 1);//入栈
-    push(a, 20);
-    is_empty(a);//判断栈空
-    is_full(a);//判断栈满
-    pop(a);//出栈
-    pop(a);
+    if(is_full(a) == 0)//栈不满则可放入
+    {
+        push(a, 1);//入栈
+        push(a, 20);
+    }
+    if(is_empty(a) == 0)//栈不空则可出栈
+    {
+        pop(a);//出栈
+        pop(a);
+    }
 
     return 0;
 }
