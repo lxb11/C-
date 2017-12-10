@@ -32,13 +32,24 @@ Node * MakeEmpty()
     Head->next = NULL;
     return Head;
 }
+//打印链表长度
+int PrintLength(List L)
+{
+    int i = 0;
+    while(L->next != NULL)
+    {
+        ++i;
+        L = L->next;
+    }
+    return i;
+}
 //打印链表
 void PrintList(List L)
 {
     while(L->next != NULL)
     {
         L = L->next;
-        printf("%d\t",L->data);
+        printf("%d----->\t",L->data);
     }
     printf("\n");
 }
@@ -102,16 +113,29 @@ Node * DeleteNode(List L, ElementType e)
 //找到元素位置
 Node * FindElementType(List L, ElementType e)
 {
-    Node *p = L;
+    int count = PrintLength(L);
+    Node *p = L->next;
     while(p->data != e)
     {
         p = p->next;
+        if(0 == count)
+        {
+            break;
+        }
+        --count;
     }
-    return p;
+    if(0 == count)
+    {
+        return NULL;
+    }
+    else
+    {
+        return p;
+    }
 
 }
 
-int main()
+/*int main()
 {
 
     Node* list = MakeEmpty();
@@ -130,4 +154,4 @@ int main()
 
 
     return 0;
-}
+}*/
