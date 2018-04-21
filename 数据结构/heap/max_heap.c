@@ -118,6 +118,8 @@ bool max_heap_push(max_heap *heap, max_heap_type data)
 	max_heap_float(heap, heap->iheap_size);
 }
 bool max_heap_pop(max_heap *heap, int index)
+//把堆的第index个元素删除，并把堆的最后一个元素放到index处。
+//把堆的第index个元素下沉
 {
 	if (max_heap_isempty(heap))
 	{
